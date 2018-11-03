@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Tkotosz\CliAppBuilder\CliAppBuilder;
+
+$cliAppBuilder = new CliAppBuilder();
+
+$cliApp = $cliAppBuilder->setApplicationId('my_test_cli_app')
+    ->setApplicationName('My TEST CLI APP')
+    ->setApplicationVersion('v1.0')
+    ->enableAutoServiceRegistration('Tkotosz\\TestCliApp\\', __DIR__ . '/../src/Tkotosz/TestCliApp/*')
+    ->enableConsoleCommandAutoRegistration()
+    ->build();
+
+$cliApp->run();
